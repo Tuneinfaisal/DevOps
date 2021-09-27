@@ -1,0 +1,140 @@
+Master atleast 2 core CPUs & 4GB RAM Nodes atleast 1 çore CPU & 4 GB RAM
+
+// Only on the Master
+
+// Update the repositpories
+
+$ sudo su
+
+apt-get update
+
+// Turn off Swap Space
+
+#swapoff-a nano /etc/fstab
+
+// Update the Hostname #nano /etc/hostname
+
+// Note the IP address ifconfig
+
+// Update the hosts file #nano /etc/hosts
+
+// Set a static IP address
+
+#nano /etc/network/interfaces
+
+// Add the below at the end of the file auto enpes8 iface enpes8 inet static
+
+address <IP-Address-Of-VM>
+
+// Install OpenSSH Server
+
+#sudo apt-get install openssh-server
+
+EOF
+
+apt-get update
+
+// Install Kubeadm, Kubelet & Kunectl apt-get install -y kubelet kubeads kubectl
+
+// Update the Kubernetes configuration
+
+#nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+// Add the below after the last line
+
+Environment "cgroup-driver-systemd/cgroup-driver-cgroupfs"
+
+// On Master
+
+sudo kubeadm init --pod-network-cidr-<>--apiserver-advertise-address-cip-address-of-master>
+
+// For starting a Calico CNI: 192.168.0.0/16 or For starting a Flannel CNI: 10.244.0.0/16
+
+//Run the following commands as normal user
+
+mkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf SHOME/.kube/config sudo chown $(id -u):$(id -g) SHOME/.kube/config
+
+kubectl get nodes
+
+kubectl get pods--all-namespaces kubectl get o wide pods--all-namespaces
+
+// For creating a POD based on Calico
+
+kubectl apply - https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml
+
+
+kubeade join 192.168.56.101:6443 --token k8jw7f.t8j5281gun5w09qs--discovery-token-ca-cert-hash sha256:b3d3e2845cc2665431f5dcb978a6845ffaa479fe880722ea444b8cb964fc3b77
+
+kubectl get nodes
+
+kubectl get pods--all-namespaces kubectl get o wide pods--all-namespaces
+
+// For creating a POD based on Calico
+
+// Status of Nodes
+
+// Status of PODS // Detailed status of PODS
+
+kubectl apply f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml
+
+// For creating the dashboard first bring this up before starting Nodes kubectl create f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+// To enable proxy and continues with new terminal window
+
+ubectl proxy
+
+// To create a service account for your dashboard kubectl create serviceaccount dashboard -n default
+
+// To add cluster binding rules for ur roles on dashboard kubectl create clusterrolebinding dashboard-admin -n default\ --clusterrole-cluster-admin \ --serviceaccount-default: dashboard
+
+
+// On Master
+
+sudo kubeadm init --pod-network-cidr-<>--apiserver-advertise-address-ip-address-of-master> // For starting a Calico CHI: 192.168.0.0/16 or For starting a Flannel CNI: 10.244.0.0/16
+
+//Run the following commands as normal user
+
+mkdir -p SHOME/.kube sudo cp-1 /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) SHOME/.kube/config
+
+kubectl get nodes
+
+kubectl get pods--all-namespaces
+
+kubectl get o wide pods--all-namespaces
+
+// Status of Nodes
+
+// Status of PODS
+
+// Detailed status of PODS
+
+For creating a POD based on Calico
+
+ubectl apply f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadn/1.7/calico.yaml
+
+// For creating the dashboard first bring this up before starting Nodes kubectl create f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+// To enable proxy and continues with new terminal window kubect1 proxy
+
+// To create a service account for your dashboard kubectl create serviceaccount dashboard -n default
+
+
+apt-get update #apt-get install -y docker.io
+
+// Run the following commands before installing the Kube environemnt apt-get update && apt-get install -y apt-transport-https curl #curls https://packages.cloud.google.com/apt/doc/apt-key-gpg | apt-key add #cat <<EOF >/etc/apt/sources.list.d/kubernetes.list deb http://apt.kubernetes.io/ kubernetes-xenial main EOF
+
+apt-get update
+
+// Install Kubeadm, Kubelet & Kunectl apt-get install -y kubelet kubeadm kubectl
+
+// Update the Kubernetes configuration nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+// Add the below after the last line Environment="cgroup-driver-systemd/cgroup-driver-cgroupfs"
+
+// On Master
+
+sudo kubeadm init --pod-network-cidr-<>--apiserver-advertise-address-ip-address-of-master> // For starting a Calico CNI: 192.168.0.0/16 or For starting a Flannel CNI: 10.244.0.0/16
+
+//Run the following commands as normal user
+
+mkdir -p SHOME/.kube sudo cp -1 /etc/kubernetes/admin.conf SHOME/.kube/config sudo chown $(id -u):$(id -g) SHOME/.kube/config
